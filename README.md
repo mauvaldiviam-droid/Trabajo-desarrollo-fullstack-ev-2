@@ -108,3 +108,7 @@ Cuentas de prueba: cliente `Mauricio` / `1234` y administrador `Admin` / `1234`.
 - **Carrito entre pestañas:** el contador también se actualiza cuando el carrito cambia en otra pestaña.
 - **Finalizar compra:** con el carrito vacío ya no muestra "¡Compra simulada con éxito!"; avisa que el carrito está vacío. En el original la compra "se concretaba" aunque no hubiera productos.
 - **Navegación:** las páginas son rutas de una sola aplicación, por lo que ya no se recarga el sitio al cambiar de página. Las rutas desconocidas redirigen al inicio.
+
+## Url en la nube
+
+- https://trabajo-desarrollo-fullstack-ev-2.vercel.app
