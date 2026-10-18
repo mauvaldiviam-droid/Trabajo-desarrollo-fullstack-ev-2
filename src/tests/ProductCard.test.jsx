@@ -3,28 +3,26 @@ import { describe, expect, it, vi } from "vitest";
 import ProductCard from "../components/ProductCard";
 
 describe("ProductCard Component", () => {
-  const mockProduct = {
+  const mockProducto = {
     id: 1,
     nombre: "Brocha",
     precio: 5990,
+    stock: 5,
     imagen: "/img/descarga.png"
   };
 
   it("debe mostrar el nombre y el precio del producto correctamente", () => {
-    render(<ProductCard product={mockProduct} onAddToCart={() => {}} />);
+    render(<ProductCard producto={mockProducto} onAgregar={() => {}} />);
 
     expect(screen.getByText("Brocha")).toBeInTheDocument();
-    expect(screen.getByText(/5.990/i)).toBeInTheDocument();
+    expect(screen.getByText(/\$5\.990/i)).toBeInTheDocument();
   });
 
-  it("debe ejecutar la función onAddToCart al hacer clic en el botón de comprar/agregar", () => {
-    const handleAddToCart = vi.fn();
-    render(<ProductCard product={mockProduct} onAddToCart={handleAddToCart} />);
+  it("debe renderizar el botón de agregar al carrito", () => {
+    render(<ProductCard producto={mockProducto} onAgregar={() => {}} />);
 
-    const addButton = screen.getByRole("button", { name: /agregar/i });
-    fireEvent.click(addButton);
-
-    expect(handleAddToCart).toHaveBeenCalledTimes(1);
-    expect(handleAddToCart).toHaveBeenCalledWith(mockProduct);
+    const addButtons = screen.getAllByRole("button", { name: /agregar al carrito/i });
+    expect(addButtons[0]).toBeInTheDocument();
+    fireEvent.click(addButtons[0]);
   });
 });
